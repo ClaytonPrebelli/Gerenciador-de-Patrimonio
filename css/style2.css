@@ -64,24 +64,130 @@ body{
         border: none;
         text-justify: auto;
         background: rgb(213, 0, 0);
-        background: linear-gradient(280deg, rgba(17, 1, 139, 1) 0%, rgba(252, 0, 0, 1) 67%);
+        background: linear-gradient(90deg, rgba(73,73,73,1) 0%, rgb(105, 105, 105) 100%);
         box-shadow: 1px 1px 3px 1px rgb(31, 0, 0);
         border-radius: 15px;
         margin-top: 20px;
+}
+
+.adiciona:hover {
+    background: linear-gradient(90deg, rgba(17, 1, 139, 1) 0%, rgba(252, 0, 0, 1) 67%);
+}
+.salvar{
+    color: #fff;
+        padding-right: 20px;
+        padding-left: 20px;
+        font-weight: 700;
+        text-shadow: 1px 2px black;
+        border: none;
+        text-justify: auto;
+        background: linear-gradient(90deg, rgba(73,73,73,1) 0%, rgb(105, 105, 105) 100%);
+        box-shadow: 1px 1px 3px 1px rgb(31, 0, 0);
+        border-radius: 15px;
+        margin-top: 20px;
+}
+
+.salvar:hover {
+    background: linear-gradient(277deg, rgba(50,242,0,1) 0%, rgb(14, 142, 0) 100%);
+}
+.limpar{
+    color: #fff;
+        padding-right: 20px;
+        padding-left: 20px;
+        font-weight: 700;
+        text-shadow: 1px 2px black;
+        border: none;
+        text-justify: auto;
+        background: rgb(213, 0, 0);
+        background: linear-gradient(90deg, rgba(73,73,73,1) 0%, rgb(105, 105, 105) 100%);
+        box-shadow: 1px 1px 3px 1px rgb(31, 0, 0);
+        border-radius: 15px;
+        margin-top: 20px;
+        margin-left: 5px;
+        margin-right: 5px;
+}
+
+.limpar:hover {
+    background: linear-gradient(281deg, rgba(255,244,4,1) 0%, rgb(255, 200, 0) 100%);
+}
+.cancelar{
+    color: #fff;
+        padding-right: 20px;
+        padding-left: 20px;
+        font-weight: 700;
+        text-shadow: 1px 2px black;
+        border: none;
+        text-justify: auto;
+        background: rgb(213, 0, 0);
+        background: linear-gradient(90deg, rgba(73,73,73,1) 0%, rgb(105, 105, 105) 100%);
+        box-shadow: 1px 1px 3px 1px rgb(31, 0, 0);
+        border-radius: 15px;
+        margin-top: 20px;
+}
+
+.cancelar:hover {
+    background: linear-gradient(274deg, rgba(195,0,0,1) 0%, rgb(255, 0, 4) 100%);
 }
 .link{
     text-decoration: none;
     color:black;
 }
-.adiciona:hover {
-    background: linear-gradient(90deg, rgba(17, 1, 139, 1) 0%, rgba(252, 0, 0, 1) 67%);
+.link:hover{
+    color:rgb(146, 3, 3)
+}
+.titulo_central{
+    text-align: center;
+    width: 100%;
 }
 .conteudo{
-    width: 90vw;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 88vw;
     height: 90%;
-    margin: 0px auto 15px auto;
+    margin: 0px 0 15px 0;
     background-color: rgba(235, 235, 235, 0.877);
     border-radius: 15px;
     box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.76);
+    padding-top: 15px;
 
 }
+.conteudo table{
+    text-align: center;
+
+}
+.formu {
+    width: 50%;
+    border-radius: 15px;
+    border: none;
+    box-shadow: 1px 1px 3px 1px rgb(92, 3, 3);
+    background-color: rgb(241, 241, 241);
+    margin: 10px 5px;
+    padding: 2px 15px 2px 15px;
+    outline: none;
+    margin-right: 100px;
+    
+}
+.formu::placeholder {
+    font-weight: 600;
+}
+
+.formularios{
+    width: 90%;
+}
+.formularios label{
+    font-weight: 700;
+    margin-right: 15px;
+}
+.form1{
+    width: 45%;
+}
+@media screen and (max-width:768px) {
+    .formu{width: 65%;
+        margin-right: 0px;
+       }
+       .form1{
+           width: 100%;
+       }
+}
+.f

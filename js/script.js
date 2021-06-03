@@ -9,3 +9,9 @@ if (erro==1){
         timer:10000
       })
 }
+function redireciona(valor){
+  window.open(`./${valor}.php`,'_self')
+}
+function voltar(){
+  window.history.back()
+}

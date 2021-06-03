@@ -21,6 +21,13 @@
   </head>
 
   <body>
+  <?php
+    if($_COOKIE!=null){
+      $login = $_COOKIE['login'];
+      header("Location:index2.php");
+    }else{
+    }
+    ?>
     <div class="container-fluid login_box">
       <h1 class="titulo">Gerenciador de Patrimônio</h1>
       <div class="card">
