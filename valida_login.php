@@ -9,9 +9,9 @@
    $verifica =  mysqli_query($conn,"SELECT * FROM usuarios where usuario = '$login' and senha = '$senha'");
    $retorna = mysqli_num_rows($verifica);
     if ($retorna>0){
-      setcookie("login",$login, time()+3600);
-      header("Location: index2.php");
+      header("Location: index2.php?login=$login");
     }else{
+      echo "fudeu";
       header("Location:index.php?erro=1");
     }
     }

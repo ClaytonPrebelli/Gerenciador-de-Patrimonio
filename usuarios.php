@@ -15,14 +15,15 @@
 
 <body>
 <?php
-    if($_COOKIE!=null){
+    $login = $_GET['login'];
+    if($login!=null){
     }else{
       header("Location:index.php");
     }
     ?>
   <nav class="navbar navbar-expand-lg top navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index2.php?logado=1" class="home">
+      <a class="navbar-brand" href=<?php echo"index2.php?logado=1&login=$login"?> class="home">
         <img src="./assets/img/logo.png" alt="logo" width="70px" height="50px">
         Gerenciador de Patrimônio</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,7 +32,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="index2.php?logado=1"><i class="fas fa-poll ico"></i>Resumo</a>
+            <a class="nav-link" aria-current="page" href=<?php echo"index2.php?logado=1&login=$login"?>><i class="fas fa-poll ico"></i>Resumo</a>
           </li>
           <li class="nav-item dropdown drop">
             <a class="nav-link dropdown-toggle  active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,11 +40,11 @@
               Cadastros
             </a>
             <ul class="dropdown-menu drop" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="usuarios.php"><i class="fas fa-user ico"></i>Usuário</a></li>
+              <li><a class="dropdown-item" href=<?php echo "usuarios.php?login=$login"?>><i class="fas fa-user ico"></i>Usuário</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="patrimonio.php"><i class="fas fa-file-invoice-dollar ico"></i>Patrimonio</a></li>
+              <li><a class="dropdown-item" href=<?php echo "patrimonio.php?login=$login"?>><i class="fas fa-file-invoice-dollar ico"></i>Patrimonio</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -66,7 +67,7 @@
     </div>
   </nav>
   <main class="corpo">
-    <button class="adiciona" onclick="redireciona('add_user')"><i class="fas fa-user-plus ico"></i>Adicionar Usuário</button>
+    <button class="adiciona"  onclick="redireciona('add_user')"><i class="fas fa-user-plus ico"></i>Adicionar Usuário</button>
     <div class="conteudo container-fluid">
       <h2 class="titulo_central">Usuários Registrados</h2>
       <table class="table table-striped">
@@ -85,7 +86,7 @@
             while ($exibe = mysqli_fetch_assoc($result)) {
               $id = $exibe['id'];
               $nome =  substr($exibe['Nome'], 0, strpos($exibe['Nome'], " "));
-              echo "<tr><th scope='row'>" . $nome . "</th><td>" . $exibe['Permissão'] . "</td><td><a class='link' href='view_user.php?id=" . $id . "'><i class='fas fa-eye ico'></i></a><a class='link' href='edit_user.php?id=" . $id . "'><i class='fas fa-edit ico'></i></a><a class='link' href='remove_user.php?id=" . $id . "'><i class='fas fa-user-times ico'></i></a></td></tr>";
+              echo "<tr><th scope='row'>" . $nome . "</th><td>" . utf8_encode($exibe['Permissão']) . "</td><td><a class='link' href='view_user.php?id=" . $id . "'><i class='fas fa-eye ico'></i></a><a class='link' href='edit_user.php?id=" . $id . "'><i class='fas fa-edit ico'></i></a><a class='link' href='remove_user.php?id=" . $id . "'><i class='fas fa-user-times ico'></i></a></td></tr>";
             }
           }
           ?>

@@ -209,6 +209,10 @@ body{
     height: 200px;
     border:1px solid black;
     box-shadow: -2px -2px 6px 2px rgb(126, 126, 126);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-clip: content-box;
+    background-position: center;
 }
 .botoes{
     margin-top: 25px;

@@ -16,13 +16,12 @@
 
 <body>
     <?php
-    if($_COOKIE!=null){
-      $login = $_COOKIE['login'];
-      $logado = $_GET['logado'];
+    $login = $_GET['login'];
+    $logado = $_GET['logado'];
+   if($login!=null||$logado=0){
+      
       if($logado>0){}else{
-      echo '<script>swal("Bem vindo '.ucfirst($_COOKIE["login"]).'")</script>';}
-      $logado = $_COOKIE['logado'];
-      setcookie("login",$login, time()+3600);
+      echo '<script>swal("Bem vindo '.ucfirst($login).'")</script>';}
     }else{
       header("Location:index.php");
     }
@@ -46,11 +45,11 @@
               Cadastros
             </a>
             <ul class="dropdown-menu drop" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="usuarios.php"><i class="fas fa-user ico"></i>Usuário</a></li>
+              <li><a class="dropdown-item" href=<?php echo "usuarios.php?login=$login"?>><i class="fas fa-user ico"></i>Usuário</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="patrimonio.php"><i class="fas fa-file-invoice-dollar ico"></i>Patrimonio</a></li>
+              <li><a class="dropdown-item" href=<?php echo "patrimonio.php?login=$login"?>><i class="fas fa-file-invoice-dollar ico"></i>Patrimonio</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>

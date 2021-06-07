@@ -13,10 +13,11 @@
 </head>
 <body>
 <?php
-    if($_COOKIE!=null){
-    }else{
-      header("Location:index.php");
-    }
+   $login = $_GET['login'];
+   if($login!=null){
+   }else{
+     header("Location:index.php");
+   }
     ?>
 <nav class="navbar navbar-expand-lg top navbar-dark bg-dark">
     <div class="container-fluid">
@@ -29,7 +30,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="index2.php?logado=1"><i class="fas fa-poll ico"></i>Resumo</a>
+            <a class="nav-link" aria-current="page" href=<?php echo"index2.php?logado=1&login=$login"?>><i class="fas fa-poll ico"></i>Resumo</a>
           </li>
           <li class="nav-item dropdown drop">
             <a class="nav-link dropdown-toggle  active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -37,11 +38,11 @@
               Cadastros
             </a>
             <ul class="dropdown-menu drop" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="usuarios.php"><i class="fas fa-user ico"></i>Usuário</a></li>
+              <li><a class="dropdown-item" href=<?php echo"usuarios.php?logado=1&login=$login"?>><i class="fas fa-user ico"></i>Usuário</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#"><i class="fas fa-file-invoice-dollar ico"></i>Patrimonio</a></li>
+              <li><a class="dropdown-item" href=<?php echo "patrimonio.php?login=$login"?>><i class="fas fa-file-invoice-dollar ico"></i>Patrimonio</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>

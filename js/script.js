@@ -1,5 +1,6 @@
 const urlParams = new URLSearchParams(window.location.search);
-const erro = urlParams.get('erro')
+const erro = urlParams.get('erro');
+const login = urlParams.get('login')
 if (erro==1){
     swal({
         icon: 'error',
@@ -9,7 +10,7 @@ if (erro==1){
       })
 }
 function redireciona(valor){
-  window.open(`./${valor}.php`,'_self')
+  window.open(valor+".php?login="+login,'_self')
 }
 function voltar(){
   window.history.back()

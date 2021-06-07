@@ -15,7 +15,9 @@
 
 <body>
 <?php
-    if($_COOKIE!=null){
+
+   $login = $_GET['login'];
+    if($login!=null){
     }else{
       header("Location:index.php");
     }
@@ -31,7 +33,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="index2.php?logado=1"><i class="fas fa-poll ico"></i>Resumo</a>
+            <a class="nav-link" aria-current="page" href=<?php echo"index2.php?logado=1&login=$login"?>><i class="fas fa-poll ico"></i>Resumo</a>
           </li>
           <li class="nav-item dropdown drop">
             <a class="nav-link dropdown-toggle  active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,11 +41,11 @@
               Cadastros
             </a>
             <ul class="dropdown-menu drop" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="usuarios.php"><i class="fas fa-user ico"></i>Usuário</a></li>
+              <li><a class="dropdown-item" href=<?php echo "usuarios.php?login=$login"?>><i class="fas fa-user ico"></i>Usuário</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="patrimonio.php"><i class="fas fa-file-invoice-dollar ico"></i>Patrimonio</a></li>
+              <li><a class="dropdown-item" href=<?php echo "patrimonio.php?login=$login"?>><i class="fas fa-file-invoice-dollar ico"></i>Patrimonio</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
@@ -72,7 +74,7 @@
       <h2 class="titulo_central">Adicionar Usuário</h2>
       <div class="formularios">
                   <div class="form1">
-                  <form action="upload_foto.php" method="post">
+                  <form action="upload_foto.php" method="post" enctype="multipart/form-data">
                   <label for="nome">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="nome" id="nome" class="formu">
                   <label for="user">Usuário:&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="user" id="user" class="formu">
                   <label for="pass">Senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="password" name="pass" id="pass" class="formu">
@@ -80,14 +82,15 @@
                     <option value="1">Administrador</option>
                     <option value="2">Usuário</option>
                   </select>
-                  <form action="upload_foto.php" method="post">
                   <label for="foto">Foto Perfil:</label><input type="file" name="foto" id="foto" class="formu formu_foto">
                   </div>
                   <div class="foto">
                   <?php
                   $feito = $_GET['feito'];
-                  $imagem_default = "/assets/img/users/default.png";
-                  if($feito){echo 'feito';
+                  $imagem_recebida = $_GET['foto'];
+                  if($feito){echo '<div class="previa_foto" style="background-image:url('.$imagem_recebida.'")>
+                          
+                    </div>';
                    }else{ echo  '<div class="previa_foto default_image">
                           
                     </div>';}
@@ -96,6 +99,7 @@
                   </div>
       </div>
       <div class="botoes">
+      <input type="text" name="login" id="login" style="display:none;" value=<?php echo "$login"?>>
       <input type="submit" value="Salvar" class="salvar"><input type="reset" class="limpar" value="Limpar"><button class="cancelar" onclick="voltar()">Cancelar</button></form>
       </div>
     </div>
