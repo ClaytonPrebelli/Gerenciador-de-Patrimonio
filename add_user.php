@@ -66,29 +66,46 @@
     </div>
   </nav>
   <main class="corpo">
-    <button class="salvar" onclick=""><i class="fas fa-save ico"></i>Salvar</button><button class="limpar" onclick=""><i class="fas fa-trash-alt ico"></i>Limpar</button><button class="cancelar" onclick="voltar()"><i class="fas fa-window-close ico"></i>Cancelar</button>
-    <div class="conteudo container-fluid">
+  
+    
+    <div class="conteudo cont_add container-fluid">
       <h2 class="titulo_central">Adicionar Usuário</h2>
       <div class="formularios">
-        <div class="form1">
-        <label for="nome">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="nome" id="nome" class="formu">
-        <label for="user">Usuário:&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="user" id="user" class="formu">
-        <label for="pass">Senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="password" name="pass" id="pass" class="formu">
-        <label for="permission">Permissão:</label><select name="permission" id="permission" class="formu">
-          <option value="1">Administrador</option>
-          <option value="2">Usuário</option>
-        </select>
-        </div>
+                  <div class="form1">
+                  <form action="upload_foto.php" method="post">
+                  <label for="nome">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="nome" id="nome" class="formu">
+                  <label for="user">Usuário:&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="user" id="user" class="formu">
+                  <label for="pass">Senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="password" name="pass" id="pass" class="formu">
+                  <label for="permission">Permissão:</label><select name="permission" id="permission" class="formu">
+                    <option value="1">Administrador</option>
+                    <option value="2">Usuário</option>
+                  </select>
+                  <form action="upload_foto.php" method="post">
+                  <label for="foto">Foto Perfil:</label><input type="file" name="foto" id="foto" class="formu formu_foto">
+                  </div>
+                  <div class="foto">
+                  <?php
+                  $feito = $_GET['feito'];
+                  $imagem_default = "/assets/img/users/default.png";
+                  if($feito){echo 'feito';
+                   }else{ echo  '<div class="previa_foto default_image">
+                          
+                    </div>';}
+                  
+                  ?>
+                  </div>
       </div>
-
-
+      <div class="botoes">
+      <input type="submit" value="Salvar" class="salvar"><input type="reset" class="limpar" value="Limpar"><button class="cancelar" onclick="voltar()">Cancelar</button></form>
+      </div>
     </div>
+    
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
   <script src="./js/script.js" type="text/javascript"></script>
-  <script src="./js/script.js" type="text/javascript"></script>
+  
 </body>
 
 </html>
