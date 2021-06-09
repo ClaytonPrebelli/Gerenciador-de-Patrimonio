@@ -78,14 +78,11 @@
       <div class="formularios">
                   <div class="form1">
                   <form action="deletar_user.php" method="post" enctype="multipart/form-data">
-                  <label for="nome">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="nome" id="nome" class="formu" value=<?echo '"'.$resposta['Nome'].'"'?> >
-                  <label for="user">Usuário:&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="user" id="user" class="formu" value=<?echo '"'.$resposta['Usuario'].'"'?> >
-                  <label for="pass">Senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="password" name="pass" id="pass" class="formu" value="***">
-                  <label for="permission">Permissão:</label></label><select name="permission" id="permission" class="formu">
-                    <option value="1">Administrador</option>
-                    <option value="2">Usuário</option>
-                  </select>
-                  <label for="foto">Foto Perfil:</label><input type="file" name="foto" id="foto" class="formu formu_foto">
+                  <label for="nome">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="nome" id="nome" class="formu" value=<?echo '"'.$resposta['Nome'].'"'?> disabled>
+                  <label for="user">Usuário:&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="user" id="user" class="formu" value=<?echo '"'.$resposta['Usuario'].'"'?>disabled >
+                  <label for="pass">Senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="password" name="pass" id="pass" class="formu" value="***"disabled>
+                  <label for="permission">Permissão:</label><input type="text" name="permissao" id="permissao" class="formu" value=<?echo '"'.utf8_encode($resposta['Permissao']).'"'?> disabled>
+                 
                   </div>
                   <div class="foto">
                   <?php
