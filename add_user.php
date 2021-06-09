@@ -100,7 +100,7 @@
       </div>
       <div class="botoes">
       <input type="text" name="login" id="login" style="display:none;" value=<?php echo "$login"?>>
-      <input type="submit" value="Salvar" class="salvar"><input type="reset" class="limpar" value="Limpar"><button class="cancelar" onclick="voltar()">Cancelar</button></form>
+      <input type="submit" value="Salvar" class="salvar"><input type="reset" class="limpar" value="Limpar"></form><button class="cancelar" onclick="volta_user()" id="volta_user">Cancelar</button>
       </div>
     </div>
     

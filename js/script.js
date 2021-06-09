@@ -9,9 +9,11 @@ if (erro==1){
         timer:10000
       })
 }
-function redireciona(valor){
-  window.open(valor+".php?login="+login,'_self')
-}
-function voltar(){
-  window.history.back()
-}
+  let adiciona_user = document.getElementById('adiciona_user')
+  adiciona_user.onclick = function(){
+    window.open(`add_user.php?login=${login}`,'_self')
+  } 
+  function volta_user(){
+    window.open(`usuarios.php?login=${login}`,'_self')
+  }
+

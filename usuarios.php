@@ -67,7 +67,7 @@
     </div>
   </nav>
   <main class="corpo">
-    <button class="adiciona"  onclick="redireciona('add_user')"><i class="fas fa-user-plus ico"></i>Adicionar Usuário</button>
+    <button class="adiciona" id="adiciona_user"><i class="fas fa-user-plus ico"></i>Adicionar Usuário</button>
     <div class="conteudo container-fluid">
       <h2 class="titulo_central">Usuários Registrados</h2>
       <table class="table table-striped">
