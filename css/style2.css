@@ -1,11 +1,14 @@
 body{
     width: 100vw;
-    height: 100vh;
+    
     background-image: url(../assets/img/bg.png);
+    background-color: #890000;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     flex-direction: column;
+    overflow-x: hidden;
+    
 }
 .topo{
     display: flex;
@@ -158,6 +161,13 @@ body{
     text-align: center;
 
 }
+.conteudo .table-estoque{
+    text-align:start;
+}
+.link_lista{
+    color:black;
+    text-decoration: underline black;
+}
 .formu {
     width: 65%;
     border-radius: 15px;
@@ -238,7 +248,15 @@ body{
        }
        .salvar,.limpar,.cancelar{
            width: 32%;
-          
-           
        }
+}
+.lista_item{
+    height: auto;
+}
+.corpo_lista{
+    height: 115%;
+    background-image: url(../assets/img/bg.png);
+    background-repeat: no-repeat;
+    background-size:cover;
+    
 }

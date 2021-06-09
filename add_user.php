@@ -41,15 +41,19 @@
               Cadastros
             </a>
             <ul class="dropdown-menu drop" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href=<?php echo "usuarios.php?login=$login"?>><i class="fas fa-user ico"></i>Usuário</a></li>
+            <li><a class="dropdown-item" href=<?php echo "usuarios.php?login=$login"?>><i class="fas fa-user ico"></i>Usuário</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href=<?php echo "patrimonio.php?login=$login"?>><i class="fas fa-file-invoice-dollar ico"></i>Patrimonio</a></li>
+              <li><a class="dropdown-item" href=<?php echo "tipo.php?login=$login"?>><i class="fas fa-border-style ico"></i>Tipo de Item</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href=<?php echo "modelo.php?login=$login"?>><i class="fas fa-palette ico"></i>Modelo de Item</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href=<?php echo "tamanho.php?login=$login"?>><i class="fas fa-tape ico"></i>Tamanho de Item</a></li>
             </ul>
           </li>
           <li class="nav-item">

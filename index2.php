@@ -14,7 +14,7 @@
   <title>Gerenciador de Patrimonio</title>
 </head>
 
-<body>
+<body class="corpo_lista">
     <?php
     $login = $_GET['login'];
     $logado = $_GET['logado'];
@@ -49,11 +49,15 @@
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href=<?php echo "patrimonio.php?login=$login"?>><i class="fas fa-file-invoice-dollar ico"></i>Patrimonio</a></li>
+              <li><a class="dropdown-item" href=<?php echo "tipo.php?login=$login"?>><i class="fas fa-border-style ico"></i>Tipo de Item</a></li>
               <li>
                 <hr class="dropdown-divider">
               </li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" href=<?php echo "modelo.php?login=$login"?>><i class="fas fa-palette ico"></i>Modelo de Item</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href=<?php echo "tamanho.php?login=$login"?>><i class="fas fa-tape ico"></i>Tamanho de Item</a></li>
             </ul>
           
           <li class="nav-item">
@@ -71,6 +75,49 @@
       </div>
     </div>
   </nav>
+  <main class="corpo">
+    <button class="adiciona" id="adiciona_user" style="visibility:hidden;"><i class="fas fa-user-plus ico"></i>Adicionar Usuário</button>
+    <div class="conteudo lista_item container-fluid">
+      <h2 class="titulo_central">Resumo do Estoque</h2>
+      <table class="table table-estoque table-striped">
+        <thead>
+          <tr>
+            <th scope="col" width="50%">Item</th>
+            <th scope="col" width="10%">Tam.</th>
+            <th scope="col" width="10%">Qtd.</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+          require 'connect.php';
+          $result = mysqli_query($conn, "select distinct e.id_patrimonio as 'id', t.desc_tipo as 'Tipo', m.desc_modelo as 'Modelo', ta.desc_tamanho as 'Tamanho', e.quantidade as 'Quantidade', m.url as 'Imagem'
+          from estoque as e 
+          inner join tipo_pat as t on t.id_tipo = e.tipo
+          inner join modelo_pat as m on m.id_modelo = e.modelo
+          inner join tamanho_pat as ta on ta.id_tamanho = e.tamanho
+          order by desc_tipo asc, desc_modelo asc,desc_tamanho asc;");
+          
+          if ($result) { // If $sql is True
+            while ($exibe = mysqli_fetch_assoc($result)) {
+              $id = $exibe['id'];
+              $tipo = utf8_encode($exibe['Tipo']);
+              if (strstr($tipo,' ')){
+                $nome =  substr($tipo, 0, strpos($tipo, " "));
+                                }else{
+                                  $nome=$tipo;
+                  }
+                
+              $modelo = " ".utf8_encode($exibe['Modelo']);
+              echo "<tr><th scope='row'>" . "<a href='item.php?login=$login&item=$id' class='link_lista link'>".$nome .$modelo. "</a></th><td>" . utf8_encode($exibe['Tamanho']) . "</td><td>".$exibe['Quantidade']."</td></tr>";
+            }
+          }
+          ?>
+        </tbody>
+      </table>
+
+
+    </div>
+  </main>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
   <script src="./js/script.js" type="text/javascript"></script>
