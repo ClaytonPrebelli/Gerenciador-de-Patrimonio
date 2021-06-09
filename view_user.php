@@ -10,20 +10,24 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
 
-  <title>Gerenciador de Patrimônio - Usuários</title>
+  <title>Gerenciador de Patrimônio - Adicionar Usuários</title>
 </head>
 
 <body>
 <?php
-    $login = $_GET['login'];
+   $id = $_GET['id'];
+   $login = $_GET['login'];
     if($login!=null){
     }else{
       header("Location:index.php");
     }
+    require 'connect.php';
+    $result = $conn->query("SELECT distinct u.id_usuario as 'id',u.nome as 'Nome', p.desc_permissao as 'Permissao', u.usuario as 'Usuario', u.foto as 'Foto'  FROM usuarios as u inner join permissoes as p on u.permissao = p.id_permissao where id_usuario=$id");
+      $resposta = $result->fetch_array(MYSQLI_ASSOC);
     ?>
   <nav class="navbar navbar-expand-lg top navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href=<?php echo"index2.php?logado=1&login=$login"?> class="home">
+      <a class="navbar-brand" href="index2.php?logado=1" class="home">
         <img src="./assets/img/logo.png" alt="logo" width="70px" height="50px">
         Gerenciador de Patrimônio</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,39 +71,40 @@
     </div>
   </nav>
   <main class="corpo">
-    <button class="adiciona" id="adiciona_user"><i class="fas fa-user-plus ico"></i>Adicionar Usuário</button>
-    <div class="conteudo container-fluid">
-      <h2 class="titulo_central">Usuários Registrados</h2>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">Nome</th>
-            <th scope="col">Permissão</th>
-            <th scope="col">Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-          require 'connect.php';
-          $result = mysqli_query($conn, "SELECT distinct u.id_usuario as 'id',u.nome as 'Nome', p.desc_permissao as 'Permissão'  FROM usuarios as u inner join permissoes as p on u.permissao = p.id_permissao");
-          if ($result) { // If $sql is True
-            while ($exibe = mysqli_fetch_assoc($result)) {
-              $id = $exibe['id'];
-              $nome =  substr($exibe['Nome'], 0, strpos($exibe['Nome'], " "));
-              echo "<tr><th scope='row'>" . $nome . "</th><td>" . utf8_encode($exibe['Permissão']) . "</td><td><a class='link' href='view_user.php?id=" . $id . "&login=$login'><i class='fas fa-eye ico'></i></a><a class='link' href='edit_user.php?id=" . $id . "&login=$login'><i class='fas fa-edit ico'></i></a><a class='link' href='remove_user.php?id=" . $id . "&login=$login'><i class='fas fa-user-times ico'></i></a></td></tr>";
-            }
-          }
-          ?>
-        </tbody>
-      </table>
-
-
+  
+    
+    <div class="conteudo cont_add container-fluid">
+      <h2 class="titulo_central">Visualizar Usuário</h2>
+      <div class="formularios">
+                  <div class="form1">
+                  <form action="upload_foto.php" method="post" enctype="multipart/form-data">
+                  <label for="nome">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="nome" id="nome" class="formu" value=<?echo '"'.$resposta['Nome'].'"'?> disabled>
+                  <label for="user">Usuário:&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="user" id="user" class="formu" value=<?echo '"'.$resposta['Usuario'].'"'?> disabled>
+                  <label for="pass">Senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="password" name="pass" id="pass" class="formu" value="******">
+                  <label for="permission">Permissão:</label><input type="text" name="permissao" id="permissao" class="formu" value=<?echo '"'.utf8_encode($resposta['Permissao']).'"'?> disabled>
+                
+                  </div>
+                  <div class="foto">
+                  <?php
+                  echo '<div class="previa_foto" style="background-image:url('.$resposta['Foto'].'")>
+                          
+                    </div>';
+                  
+                  ?>
+                  </div>
+      </div>
+      <div class="botoes">
+      <input type="text" name="login" id="login" style="display:none;" value=<?php echo "$login"?>>
+      <input type="submit" value="Salvar" class="salvar"><input type="reset" class="limpar" value="Limpar"></form><button class="cancelar" onclick="volta_user()" id="volta_user">Cancelar</button>
+      </div>
     </div>
+    
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
   <script src="./js/script.js" type="text/javascript"></script>
+  
 </body>
 
 </html>
