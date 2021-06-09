@@ -2,7 +2,6 @@
             require 'connect.php';
             $login = $_POST['login'];
             $dir = "./assets/img/users"; 
-            $imagem = $_FILES['imagem']; 
             $nome = $_POST['nome'];
             $usuario = $_POST['user'];
             $senha = md5($_POST['pass']);
@@ -19,7 +18,7 @@
       
 if (move_uploaded_file($file["tmp_name"], "$dir/".$id_max.".png")) { 
     $img_enviada = true;
-    header("Location:add_user.php?foto=$url_imagem&feito=1&login=$login");
+    header("Location:add_user.php?foto=$url_imagem&feito=1&login=$login&acao=inserido");
     if($inserir){
 
     }else{

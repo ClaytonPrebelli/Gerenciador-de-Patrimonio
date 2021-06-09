@@ -9,8 +9,8 @@
   <link rel="stylesheet" href="./css/style2.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
-
-  <title>Gerenciador de Patrimônio - Visualizar Usuários</title>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <title>Gerenciador de Patrimônio - Remover Usuários</title>
 </head>
 
 <body>
@@ -22,7 +22,7 @@
       header("Location:index.php");
     }
     require 'connect.php';
-    $result = $conn->query("SELECT distinct u.id_usuario as 'id',u.nome as 'Nome', p.desc_permissao as 'Permissao', u.usuario as 'Usuario', u.foto as 'Foto'  FROM usuarios as u inner join permissoes as p on u.permissao = p.id_permissao where id_usuario=$id");
+    $result = $conn->query("SELECT distinct u.id_usuario as 'id',u.nome as 'Nome', p.desc_permissao as 'Permissao', u.usuario as 'Usuario', u.foto as 'Foto', u.senha as 'Senha'  FROM usuarios as u inner join permissoes as p on u.permissao = p.id_permissao where id_usuario=$id");
       $resposta = $result->fetch_array(MYSQLI_ASSOC);
     ?>
   <nav class="navbar navbar-expand-lg top navbar-dark bg-dark">
@@ -74,15 +74,18 @@
   
     
     <div class="conteudo cont_add container-fluid">
-      <h2 class="titulo_central">Visualizar Usuário</h2>
+      <h2 class="titulo_central">Remover Usuário</h2>
       <div class="formularios">
                   <div class="form1">
-                  <form action="upload_foto.php" method="post" enctype="multipart/form-data">
-                  <label for="nome">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="nome" id="nome" class="formu" value=<?echo '"'.$resposta['Nome'].'"'?> disabled>
-                  <label for="user">Usuário:&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="user" id="user" class="formu" value=<?echo '"'.$resposta['Usuario'].'"'?> disabled>
-                  <label for="pass">Senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="password" name="pass" id="pass" class="formu" value="******">
-                  <label for="permission">Permissão:</label><input type="text" name="permissao" id="permissao" class="formu" value=<?echo '"'.utf8_encode($resposta['Permissao']).'"'?> disabled>
-                
+                  <form action="deletar_user.php" method="post" enctype="multipart/form-data">
+                  <label for="nome">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="nome" id="nome" class="formu" value=<?echo '"'.$resposta['Nome'].'"'?> >
+                  <label for="user">Usuário:&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="user" id="user" class="formu" value=<?echo '"'.$resposta['Usuario'].'"'?> >
+                  <label for="pass">Senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="password" name="pass" id="pass" class="formu" value="***">
+                  <label for="permission">Permissão:</label></label><select name="permission" id="permission" class="formu">
+                    <option value="1">Administrador</option>
+                    <option value="2">Usuário</option>
+                  </select>
+                  <label for="foto">Foto Perfil:</label><input type="file" name="foto" id="foto" class="formu formu_foto">
                   </div>
                   <div class="foto">
                   <?php
@@ -95,7 +98,8 @@
       </div>
       <div class="botoes">
       <input type="text" name="login" id="login" style="display:none;" value=<?php echo "$login"?>>
-      </form><button class="cancelar" onclick="volta_user()" id="volta_user"><i class="fas fa-arrow-circle-left ico"></i>Voltar</button>
+      <input type="text" name="id" id="id" style="display:none;" value=<?php echo "$id"?>>
+      <input type="submit" value="Deletar" class="cancelar" style="margin-right:15px"></form><button class="salvar" onclick="volta_user()" id="volta_user"><i class="fas fa-arrow-circle-left ico"></i>Voltar</button>
       </div>
     </div>
     
