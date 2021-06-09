@@ -11,6 +11,7 @@
             $senha_temp = "***";
             $permissao = $_POST['permission'];
             $valida_imagem = $imagem['size'];
+            $email = $_POST['email'];
             if($valida_imagem>0){
               echo "tem imagem";
             }else{
@@ -18,12 +19,12 @@
             }
            if ($senha==$senha_temp){
               if($imagem['size']>0){
-              $query = "UPDATE usuarios set nome = '$nome', usuario = '$usuario', foto = '$url_imagem', permissao = $permissao where id_usuario = $id;";}
-              else{$query = "UPDATE usuarios set nome = '$nome', usuario = '$usuario', permissao = $permissao where id_usuario = $id;";}
+              $query = "UPDATE usuarios set nome = '$nome', usuario = '$usuario', foto = '$url_imagem', permissao = $permissao, email = '$email' where id_usuario = $id;";}
+              else{$query = "UPDATE usuarios set nome = '$nome', usuario = '$usuario', permissao = $permissao, email = '$email' where id_usuario = $id;";}
             }else{
               if($imagem['size']>0){
-              $query = "UPDATE usuarios set nome = '$nome', senha = md5('$senha'), usuario = '$usuario', foto = '$url_imagem', permissao = $permissao where id_usuario = $id;";}
-              else{$query = "UPDATE usuarios set nome = '$nome', senha = md5('$senha'), usuario = '$usuario', permissao = $permissao where id_usuario = $id;";}
+              $query = "UPDATE usuarios set nome = '$nome', senha = md5('$senha'), usuario = '$usuario', foto = '$url_imagem', permissao = $permissao, email = '$email' where id_usuario = $id;";}
+              else{$query = "UPDATE usuarios set nome = '$nome', senha = md5('$senha'), usuario = '$usuario', permissao = $permissao, email = '$email' where id_usuario = $id;";}
             }
             
             $update = $conn->query($query); 

@@ -6,10 +6,11 @@
             $usuario = $_POST['user'];
             $senha = md5($_POST['pass']);
             $permissao = $_POST['permission'];
+            $email - $_POST['email'];
             $query = "INSERT INTO usuarios values (default,'$usuario','$senha','$nome,$permissao,'$url_imagem')";
             $file = $_FILES["foto"]; 
             $img_enviada = false;
-            $inserir = $conn->query("INSERT INTO usuarios values (default,'$usuario','$senha','$nome',$permissao,'ENVIAR');");
+            $inserir = $conn->query("INSERT INTO usuarios values (default,'$usuario','$senha','$nome',$permissao,'ENVIAR',$email);");
             $id = $conn->query("SELECT MAX(id_usuario) as maxId FROM usuarios;");
             $result = mysqli_fetch_assoc($id);
             $id_max = $result['maxId'];

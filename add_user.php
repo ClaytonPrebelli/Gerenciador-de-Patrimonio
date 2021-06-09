@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./css/style2.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
-
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <title>Gerenciador de Patrimônio - Adicionar Usuários</title>
 </head>
 
@@ -76,6 +76,7 @@
                   <div class="form1">
                   <form action="upload_foto.php" method="post" enctype="multipart/form-data">
                   <label for="nome">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="nome" id="nome" class="formu">
+                  <label for="email">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="email" id="email" class="formu">
                   <label for="user">Usuário:&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="user" id="user" class="formu">
                   <label for="pass">Senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="password" name="pass" id="pass" class="formu">
                   <label for="permission">Permissão:</label><select name="permission" id="permission" class="formu">
@@ -100,7 +101,7 @@
       </div>
       <div class="botoes">
       <input type="text" name="login" id="login" style="display:none;" value=<?php echo "$login"?>>
-      <input type="submit" value="Salvar" class="salvar"><input type="reset" class="limpar" value="Limpar"></form><button class="cancelar" onclick="volta_user()" id="volta_user">Cancelar</button>
+      <input type="submit" value="Salvar" class="salvar"><input type="reset" class="limpar" value="Limpar"></form><button class="cancelar" onclick="volta_user()" id="volta_user"><i class="fas fa-arrow-circle-left ico"></i>Voltar</button>
       </div>
     </div>
     

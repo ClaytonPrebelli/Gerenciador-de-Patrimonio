@@ -9,7 +9,7 @@
   <link rel="stylesheet" href="./css/style2.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
-
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <title>Gerenciador de Patrimônio - Visualizar Usuários</title>
 </head>
 
@@ -22,7 +22,7 @@
       header("Location:index.php");
     }
     require 'connect.php';
-    $result = $conn->query("SELECT distinct u.id_usuario as 'id',u.nome as 'Nome', p.desc_permissao as 'Permissao', u.usuario as 'Usuario', u.foto as 'Foto'  FROM usuarios as u inner join permissoes as p on u.permissao = p.id_permissao where id_usuario=$id");
+    $result = $conn->query("SELECT distinct u.id_usuario as 'id',u.nome as 'Nome', p.desc_permissao as 'Permissao', u.usuario as 'Usuario', u.foto as 'Foto', u.email as 'Email'  FROM usuarios as u inner join permissoes as p on u.permissao = p.id_permissao where id_usuario=$id");
       $resposta = $result->fetch_array(MYSQLI_ASSOC);
     ?>
   <nav class="navbar navbar-expand-lg top navbar-dark bg-dark">
@@ -79,6 +79,7 @@
                   <div class="form1">
                   <form action="upload_foto.php" method="post" enctype="multipart/form-data">
                   <label for="nome">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="nome" id="nome" class="formu" value=<?echo '"'.$resposta['Nome'].'"'?> disabled>
+                  <label for="email">Email:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="email" id="email" class="formu" value=<?echo '"'.$resposta['Email'].'"'?> disabled>
                   <label for="user">Usuário:&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="user" id="user" class="formu" value=<?echo '"'.$resposta['Usuario'].'"'?> disabled>
                   <label for="pass">Senha:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="password" name="pass" id="pass" class="formu" value="******">
                   <label for="permission">Permissão:</label><input type="text" name="permissao" id="permissao" class="formu" value=<?echo '"'.utf8_encode($resposta['Permissao']).'"'?> disabled>
