@@ -31,4 +31,7 @@ switch(acao){
   function volta_user(){
     window.open(`usuarios.php?login=${login}`,'_self')
   }
+  function volta_item(){
+    window.open(`index2.php?login=${login}&logado=1`,'_self')
+  }
     

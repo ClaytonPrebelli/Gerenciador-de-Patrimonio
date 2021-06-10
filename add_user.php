@@ -57,12 +57,12 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">
+            <a class="nav-link" href=<?php echo "entrada.php?login=$login"?> tabindex="-1" aria-disabled="true">
               <spam class="separa">|</spam><i class="fas fa-sign-in-alt ico"></i>Entradas
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">
+            <a class="nav-link" href=<?php echo "saida.php?login=$login"?> tabindex="-1" aria-disabled="true">
               <spam class="separa">|</spam><i class="fas fa-sign-out-alt ico"></i>Saídas
             </a>
           </li>
