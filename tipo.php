@@ -10,17 +10,19 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
   <link rel="shortcut icon" type="image/x-icon" href="./favicon.ico">
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <title>Gerenciador de Patrimônio - Adicionar Tipo de Item</title>
+  <title>Gerenciador de Patrimônio - Cadastrar Tipos</title>
 </head>
 
 <body>
 <?php
-
    $login = $_GET['login'];
     if($login!=null){
     }else{
       header("Location:index.php");
     }
+    require 'connect.php';
+    $result = $conn->query("SELECT desc_tipo AS 'Desricao' FROM tipo_pat ORDER BY desc_tipo ASC");
+      $resposta = $result->fetch_array(MYSQLI_ASSOC);
     ?>
   <nav class="navbar navbar-expand-lg top navbar-dark bg-dark">
     <div class="container-fluid">
@@ -75,13 +77,13 @@
   
     
     <div class="conteudo cont_add container-fluid">
-      <h2 class="titulo_central">Adicionar Tipo de Item</h2>
+      <h2 class="titulo_central">Cadastrar Novo Tipo</h2>
       <div class="formularios">
                   <div class="form1">
-                  <form action="upload_foto.php" method="post" enctype="multipart/form-data">
-                  <label for="tipo">Tipo:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="tipo" id="tipo" class="formu">
+                  <form action="cadastra_tipo.php" method="post" enctype="multipart/form-data">
+                  <label for="nome">Nome:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label><input type="text" name="nome" id="nome" class="formu">             
                   </div>
-                  <div class="tabela_existe">
+                  <div class="foto">
                   <table class="table table-striped">
         <thead>
           <tr>
@@ -92,12 +94,14 @@
         <tbody>
                   <?php
                   
+                  
                   ?>
                   </div>
-      </div>
+        </div>
+     
       <div class="botoes">
       <input type="text" name="login" id="login" style="display:none;" value=<?php echo "$login"?>>
-      <input type="submit" value="Salvar" class="salvar"><input type="reset" class="limpar" value="Limpar"></form><button class="cancelar" onclick="volta_user()" id="volta_user"><i class="fas fa-arrow-circle-left ico"></i>Voltar</button>
+      </form><button class="cancelar" onclick="volta_user()" id="volta_user"><i class="fas fa-arrow-circle-left ico"></i>Voltar</button>
       </div>
     </div>
     
